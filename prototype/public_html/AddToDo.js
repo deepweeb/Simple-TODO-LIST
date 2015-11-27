@@ -1,5 +1,4 @@
-var main = function ()
-{
+var main = function (){
     "use strict";
    
     var ToDos = [];
@@ -7,15 +6,14 @@ var main = function ()
          
     //here comes what happens when button 1 is click
 
-       $('#button1').click(function (event)
-    {
+       $('#button1').click(function (event){
         addTodoFromInputBox();
        
     });
    
     //define the fuction addTodoFromInputBox
-    var addTodoFromInputBox = function ()
-    {
+    //JSON format
+    var addTodoFromInputBox = function (){
         if (($('#inputrange1').val() !== "")
                 && ($('#inputbox2').val() !== "")
                 && ($('#inputbox3').val() !== ""))
@@ -23,68 +21,64 @@ var main = function ()
             var new_object = {"Priority": $('#inputrange1').val(),
                 "Task": $('#inputbox2').val(),
                 "Deadline": $('#inputbox3').val(),
-                "Status": "In process "};
+                "Status": "In progress "};
            
             ToDos.push(new_object);
             
             
-            $(".outputbox").prepend( "<a>"+ new_object.Priority +"</a>&nbsp&nbsp<a>"
-                    + new_object.Task +"</a>&nbsp&nbsp<a>"
-                    + new_object.Deadline +"</a>&nbsp&nbsp<a>"
-                    + new_object.Status +"</a>&nbsp&nbsp<input type=\"checkbox\"><br>");
-     
-         
+            $(".outputbox").prepend(
+               "<a>" + new_object.Priority + "</a>&nbsp&nbsp<a>"
+                    + new_object.Task + "</a>&nbsp&nbsp<a>"
+                    + new_object.Deadline + "</a>&nbsp&nbsp<a>"
+                    + new_object.Status + "</a>&nbsp&nbsp<input type=\"checkbox\"><br>"
+                    );
+
             $('#inputrange1').val("1");
             document.getElementById("rangeText").innerHTML = rangeValues[$('#inputrange1').val()];
             $('#inputbox2').val("");
             //$('#inputbox3').val("2015-01-01");
            
             //ToDos[ToDos.length]= new_object;
-           
-            
-           
-          
-       
+      
         }
     };
  
-   
+ 
   
-       $('#Sortby').change(function (event)
-    {
+       $('#Sortby').change(function (event){
         if(document.getElementById("Sortby").options[document.getElementById("Sortby").selectedIndex].id === "Priority")
-        {soortToDobyPriority();}
+        {sortToDobyPriority();}
         else
         {
             alert("not available yet");
         }
     });
    
-    var soortToDobyPriority = function()
-    {
+    var sortToDobyPriority = function(){
        
-        var Priority1 = [];
+        var PriorityArray = [];
        for (var i=4; i>=1; i--)
        {
         for (var j=0; j<ToDos.length; j++)
         {
             if (ToDos[j].Priority === i.toString() )
             {  
-             
-                Priority1.push(ToDos[j]);
+                PriorityArray.push(ToDos[j]);
             }
         }
     }
-    
+ 
        
         //print out in order from high to low priority
         $('.outputbox').html("");
-        for (var i=0; i<Priority1.length; i++)
+        for (var i=0; i<PriorityArray.length; i++)
         {
-         $(".outputbox").append( "<a>"+ Priority1[i].Priority +"</a>&nbsp&nbsp<a>"
-                    + Priority1[i].Task +"</a>&nbsp&nbsp<a>"
-                    + Priority1[i].Deadline +"</a>&nbsp&nbsp<a>"
-                    + Priority1[i].Status +"</a>&nbsp&nbsp<input type=\"checkbox\"><br>");
+            $(".outputbox").append(
+              "<a>" + PriorityArray[i].Priority + "</a>&nbsp&nbsp<a>"
+                    + PriorityArray[i].Task +"</a>&nbsp&nbsp<a>"
+                    + PriorityArray[i].Deadline +"</a>&nbsp&nbsp<a>"
+                    + PriorityArray[i].Status + "</a>&nbsp&nbsp<input type=\"checkbox\"><br>"
+                 );
         }
        
     };

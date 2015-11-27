@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>To do list</title>
+</head>
+<body>
+
+    <div align="center">
+
+        <center><a href="Index.html"><img src="images/Logo.png" width="350px" height="200px"></a></center>
+        <center><img src="images/IMG1.png" width="500px" height="200px"></center>
+        <hr color="#B45F04">
+
+        <center><b><a href="Register.html"><font color="#B45F04">Register</font></a></b></center>
+        <center><b><a href="Donate.html"><font color="#B45F04">Donate</font></a></b></center>
+        <center><a href="Upgrade.html"><font color="#B45F04">Upgrade Premium</font></a></b></center>
+
+        <hr color="#B45F04">
+
+        <center><h1><font color="#B45F04">Create To-Do</font></h1></center>
+        <h1><font color="#B45F04">Your To-Do List</font></h1>
+
+        <!--Begin Input ToDo Items -->
+        <div align="justify">
+
+            <b><font color="#B45F04" size="3">Type in an item</font></b><p>
+                <input id="inputbox2" type="text" placeholder="Task"><br />
+
+                <b><font color="#B45F04" size="3">Fill in a priority<br>(4 highest - 1 lowest)</font></b>
+            <p>
+                <input id="inputrange1" type="range" min="1" max="4" value="1" style=" width:97px; height:5px; ">
+                <section id="rangeText">&#9824;</section><br /><br />
+
+                <b><font color="#B45F04" size="3">Fill in the deadline<br>dd/mm/jjjj</font></b>
+            <p>
+                <input id="inputbox3" type="date" min="2012-01-01" max="2055-01-01" value="2015-01-01">
+            <p>
+
+            <p>
+
+
+
+        </div>
+        <center>
+            <input id="button1" type="button" value="Add To-Do" />
+            <select form="Sort" id="Sortby">
+                <option selected>Sort by...</option>
+                <option id="Priority">Priority</option>
+                <option id="Date">Date</option>
+                <option id="FP">Finished-In Progress</option>
+                <option id="PF">In Progress-Finished</option>
+            </select>
+
+            <input type="submit" name="delete" value="Delete selected">&nbsp&nbsp
+            <p />
+
+            <input type="submit" name="print" value="Print">
+            <input type="submit" name="export" value="Export">
+        </center>
+
+        <!--Print TodoItem-->
+        <div>Priority Item name Deadline Status</div>
+        <div align="right">
+            <div class="outputbox" a>
+            </div>
+        </div>
+
+
+
+        </form>
+    </div>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="AddToDo.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <title>A Simple App</title>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+   
+            <p>Add To-Dos:</p>
+
+            <!--<input id="inputbox1" type="number" min="1" max="5" oninput="myFunction()" placeholder="1(max)-5(min)">-->
+            <input id="inputrange1" type="range" min="1" max="4" value="1" style=" width:97px; height:5px; ">
+            &nbsp&nbsp
+            <input id="inputbox2" type="text" placeholder="Task">
+            <input id="inputbox3" type="date" min="2012-01-01" max="2055-01-01" value="2015-01-01">
+          
+            <input id="button1" type="button" value="Add To-Do" />
+            	
+            <select form="Sort" id="Sortby">
+                <option selected>Sort by...</option>
+				<option id="Priority">Priority</option>
+			    <option id="Date">Date</option>
+				<option id="FP">Finished-In Progress</option>
+			    <option id="PF">In Progress-Finished</option>
+			</select>
+            
+            <br>
+            <section id="rangeText">&#9824;</section>
+
+            <br>
+            <div>Priority Item name Deadline Status</div>
+            <div class="outputbox">
+            </div>
+
+
+
+
+        </main>
+        <footer>
+        </footer>
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="AddToDo.js"></script>
+        
+       <!--<script type="text/javascript">
+            $(document).ready(function () {
+                $('#inputbox1').keypress(function (key) {
+                    if (key.charCode < 49 || key.charCode > 53)
+                        return false;
+                });
+            });
+        </script>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("inputbox1").value;
+                if (x.length > 1) {
+                    document.getElementById("inputbox1").value = document.getElementById("inputbox1").value.slice(0, 1);
+                }
+            }
+            ;
+        </script>-->
+       
+    </body>
+</html>
