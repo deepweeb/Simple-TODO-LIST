@@ -52,8 +52,12 @@ var main = function ()
   
        $('#Sortby').change(function (event)
     {
-        
-        soortToDobyPriority();
+        if(document.getElementById("Sortby").options[document.getElementById("Sortby").selectedIndex].id === "Priority")
+        {soortToDobyPriority();}
+        else
+        {
+            alert("not available yet");
+        }
     });
    
     var soortToDobyPriority = function()
