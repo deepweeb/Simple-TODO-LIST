@@ -1,53 +1,75 @@
 <html>
-<head>
-<title>Simple To-Do list</title>
+<head> 
+   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:600' rel='stylesheet' type='text/css'>
+  <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+<title>To do list</title>
 </head>
 <body>
 
-    <div align="center">
+<div align="center">
 
+	<p><img src="images/Logo.png" width="350px" height="200px"></p>
+	<p><img src="images/IMG1.png" width="500px" height="200px"></p>
+	<b><a href="Register.html"><font color="#B45F04">Register</font></a></b>
+	<b><a href="Donate.html"><font color="#B45F04">Donate</font></a></b>
+	<b><a href="Upgrade.html"><font color="#B45F04">Upgrade Premium</font></a></b>
+        <h1><font color="#B45F04">Create To-Do</font></h1>
+	<h1><font color="#B45F04">Your To-Do List</font></h1>
+	
 
-        <a href="Index.html"><img src="images/Logo.png" width="350px" height="200px"></a>
-        <form>
-            Email Password<br>
-            <input type="text" name="email"><input type="text" name="email">
-            <input type="submit" name="Login" label="Log in">
-            <br>Keep me logged in<input type="checkbox"> Forgot your password?
-        </form>
+	<b><font color="#B45F04" size="3">Type in an item</font></b>
+        <p><input id="inputbox2" type="text" placeholder="Task" size="40" maxlength="30"></p>
+        <b><font color="#B45F04" size="3">Choose a priority</font></b>
+        <p><input id="inputrange1" type="range" min="1" max="4" value="1" style=" width:97px; height:5px; "></p>
+        <section id="rangeText">&#9824;</section>
+	<b><font color="#B45F04" size="3">Fill in the deadline<br>month/date/year</font></b><p>
+	<input id="inputbox3" type="date" min="2012-01-01" max="2055-01-01" value="2015-01-01"></p>
+	
+    
+    
 
-        <hr color="#B45F04">
-        <p></p>
+	<input id="button1" type="button" value="Add To-Do" />&nbsp&nbsp&nbsp&nbsp
+	<form id="Sort">
+		<select form="Sort" id="Sortby">
+                    <option id="Sort" selected>Sort by...</option>
+                    <option id="Priority">Priority Descending</option>
+                    <option id="Date">Date Ascending</option>
+                    <option id="Progress">In Progress-Finished</option>
+		</select>
+	</form>
+	<input type="submit" name="print" value="Print">&nbsp&nbsp&nbsp&nbsp
+	<input type="submit" name="export" value="Export">
 
-        <b><a href="TODOAPP/Register.html"><font color="#B45F04">Register</font></a></b>
+</div>
 
-        <b><a href="TODOAPP/Donate.html"><font color="#B45F04">Donate</font></a></b>
+    
+<div id="container">  
+<center>
+    <h1> <!--header of te todo's element-->   
+        <table border="0">	
+		<td width="20px" bgcolor="#FF8000" align="center" ><center>&#127775;</center></td>
+		<td width="300px" bgcolor="#FF8000" align="center"><b>Task</b></td>
+		<td width="90px" bgcolor="#FF8000" align="center"><b>Deadline</b></td>
+		<td width="80px" bgcolor="#FF8000" align="center"><b>Status</b></td>       
+                <td width="28px" bgcolor="#FF8000" align="center"><b>&#x21ba;</b></td>
+		<td width="28px" bgcolor="#FF8000" align="center"><a style="font-family:'Segoe UI Symbol';color:black;font-size:17px;">&#xe107;</a></td>  
+        </table>      
+    </h1>
+    
+    
+ <!--outputbox where the todo will be added-->   
+<div id='outputbox'>
+</div>
+   
+</center>
+</div>
+    
 
-        <b><a href="TODOAPP/FAQ.html"><font color="#B45F04">FAQ</font></a></b>
-
-        <p></p>
-        <hr color="#B45F04">
-
-
-        <center><img src="images/IMG1.png" width="1000px" height="250px"></center>
-
-
-        <font size="5" color="#B45F04">
-            <li>
-                A <b>free, simple</b> but super web-app<br /> that makes you
-                <b>more productive<br /> than ever!</b>
-            </li>
-            <li>
-                Create, edit and print your to-do list
-                <b>in an instant</b>
-            </li>
-            <b><font size="5" color="#B45F04">Just register and your ready to go!</font></b><br>
-            <a href="Register.html"><img src="images/Register.png"></a>
-
-
-
-
-
-        </font>
-    </div>
+    
+    
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="newjavascript.js"></script>
 </body>
 </html>
+
