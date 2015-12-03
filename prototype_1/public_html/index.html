@@ -1,0 +1,107 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="newcss.css">
+<title>To do list</title>
+</head>
+<body>
+
+<div align="center">
+<form id="Select">
+<table border="0" width="1000px">
+	
+	<tr height="200px">
+		<td colspan="3"><center><a href="Index.html"><img src="images/Logo.png" width="350px" height="200px"></a></center></td>
+		<td colspan="3"><center><img src="images/IMG1.png" width="500px" height="200px"></center></td>
+	</tr>
+	<tr height="20px">
+		<td colspan="6"><hr color="#B45F04"></td>
+	</tr>	
+	<tr height="40px">
+		<td colspan="2" width="400px"><center><b><a href="Register.html"><font color="#B45F04">Register</font></a></b></center></td>
+		<td colspan="2" width="400px"><center><b><a href="Donate.html"><font color="#B45F04">Donate</font></a></b></center></td>
+		<td colspan="2" width="400px"><center><b><a href="Upgrade.html"><font color="#B45F04">Upgrade Premium</font></a></b></center></td>
+	</tr>
+	<tr height="20px">
+		<td colspan="6"><hr color="#B45F04"></td>
+	</tr>	
+	<tr height="50px">
+		<td colspan="2"><center><h1><font color="#B45F04">Create To-Do</font></h1></center></td>
+		<td colspan="4"><center><h1><font color="#B45F04">Your To-Do List</font></h1></center></td>		
+	</tr>
+	
+	<tr height="300px">
+		<td colspan="1">
+			<div align="center">
+				<table border="0">
+					<tr>
+					<td colspan="2">
+				<b><font color="#B45F04" size="3">Type in an item</font></b><p>
+                                        <input id="inputbox2" type="text" placeholder="Task"size="40" maxlength="30"></p>
+					</td>
+					</tr>
+                                        <tr>
+					<td>
+                                            
+                                            <br><b><font color="#B45F04" size="3">Choose a priority</font></b><p>
+                                <input id="inputrange1" type="range" min="1" max="4" value="1" style=" width:97px; height:5px; "><p></p>
+                                                 <section id="rangeText">&#9824;</section>
+					</td>
+					<td>
+				<br><b><font color="#B45F04" size="3">Fill in the deadline<br>month/date/year</font></b><p>
+					<input id="inputbox3" type="date" min="2012-01-01" max="2055-01-01" value="2015-01-01"></p>
+					</td>
+					</tr>
+				</table>
+				<p>
+				
+				
+				
+			</div>
+			<center>
+				<input id="button1" type="button" value="Add To-Do" />&nbsp&nbsp&nbsp&nbsp
+			
+				<form id="Sort">
+					<select form="Sort" id="Sortby">
+                                            <option id="Sort" selected>Sort by...</option>
+						<option id="Priority">Priority Descending</option>
+						<option id="Date">Date Ascending</option>
+						<option id="Progress">In Progress-Finished</option>
+					</select>
+				</form>
+				<p>
+				<form>
+				<input type="submit" name="print" value="Print">&nbsp&nbsp&nbsp&nbsp
+				<input type="submit" name="export" value="Export">
+				</form>		
+			</center>
+		</td>
+		<td colspan="5">
+		<center>
+			<table border="2" bordercolor=orange valign="top" >	
+                                        <tr  valign="center">
+					<td width="20px" bgcolor="#FF8000" align="center" ><center>&#127775;</center></td>
+					<td width="300px" bgcolor="#FF8000" align="center"><b>Task</b></td>
+					<td width="90px" bgcolor="#FF8000" align="center"><b>Deadline</b></td>
+					<td width="80px" bgcolor="#FF8000" align="center"><b>Status</b></td>       
+                                        <td width="25px" bgcolor="#FF8000" align="center"><b>&#x21ba;</b></td>
+					<td width="20px" bgcolor="#FF8000" align="center"><a style="font-family:'Segoe UI Symbol';color:black;font-size:17px;">&#xe107;</a></td>  
+
+                                            </tr>  
+                                 </table> 
+                                        <table border="1" bordercolor=black valign="top">	
+                                        <section class="outputbox" id="out1">
+                                         </section>
+                                 </table> 
+          
+                                
+			
+		</center></td>
+	</tr>
+</table>
+</form>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="newjavascript.js"></script>
+</body>
+</html>
+
