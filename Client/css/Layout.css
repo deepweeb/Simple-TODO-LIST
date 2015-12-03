@@ -1,0 +1,10 @@
+body {
+    background-color: whitesmoke;
+}
+
+table td, table td * {
+    vertical-align: top;
+}.outputbox {
+
+}
+

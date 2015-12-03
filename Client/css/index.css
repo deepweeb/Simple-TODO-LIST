@@ -1,0 +1,30 @@
+body {
+    background-color: whitesmoke;
+     color: #B45F04;
+     overflow: auto;
+}
+
+#logo{
+    width: 350px;
+    height: 200px;
+    border: 2px antiquewhite;
+    position: relative;
+    top: 50px;
+    right: 300px;
+}
+
+#login{
+    position: relative;
+    bottom: 100px;
+    left: 300px;
+    align-items: center;
+}
+
+#email{
+  
+}
+
+hr{
+    width: 1000px;
+}
+
