@@ -1,11 +1,15 @@
 body {
     background-color: whitesmoke;
      color: #B45F04;
-     overflow: auto;
+     overflow: hidden;
+
+}
+#center{
+    text-align: center;
 }
 
 #logo{
-    width: 350px;
+    width: 400px;
     height: 200px;
     border: 2px antiquewhite;
     position: relative;
@@ -17,14 +21,56 @@ body {
     position: relative;
     bottom: 100px;
     left: 300px;
-    align-items: center;
+    
 }
 
-#email{
-  
+#button{
+    position: relative;
+    bottom: 10px;
+    left: 100px;
+    background-color: #B45F04;
+}
+
+#text{
+    position: relative;
+    bottom: 10px;
+   
 }
 
 hr{
     width: 1000px;
+   
 }
 
+#register{
+    color: #B45F04;
+    position: relative;
+    right: 250px;
+}
+
+#donate{
+    color: #B45F04; 
+    
+}
+
+#faq{
+    color: #B45F04;
+    position: relative;
+    left: 250px;
+}
+
+#saletext{
+    position: relative;
+    left: 450px;
+    display: inline-block;
+    width: 15em;
+}
+
+#reg{
+    position: relative;
+    bottom: 130px;
+    left: 900px;
+    display: block;
+    width: 40em;
+    text-align: center;
+}

@@ -1,10 +1,101 @@
 body {
     background-color: whitesmoke;
+    overflow: auto;  
+    position: relative;
+    top: 110px;     
 }
 
 table td, table td * {
     vertical-align: top;
-}.outputbox {
-
 }
+
+#logo{
+    width: 400px;
+    height: 200px;
+    bottom: 50px;
+    border: 2px antiquewhite;
+    position: relative;
+    right: 50px;
+}
+
+#sideimg{
+    position: relative;
+    left: 50px;
+    bottom: 50px;
+    height: 200px;
+}   
+
+hr{
+    width: 1000px;
+   
+}
+
+#register{
+    color: #B45F04;
+    position: relative;
+    right: 200px;
+}
+
+#donate{
+    color: #B45F04; 
+    position: relative;
+    left: 50px;    
+    
+}
+
+#upgrade{
+    color: #B45F04;
+    position: relative;
+    left: 250px;
+}
+
+#block{
+    position: relative;
+    right: 300px;
+    display: inline-block;
+}
+
+#container{ 
+    position: relative;
+    bottom: 470px;
+    left: 200px;
+}
+
+
+td{
+    text-align: center;
+    background-color: #B45F04;
+    border-color: black;
+}
+
+#todolist:hover{
+
+animation-name: todoitem;
+animation-fill-mode: forwards; 
+animation-duration: 0.5s;
+}
+
+@keyframes todoitem{
+    from{opacity: 1,5;}
+    to {opacity: 1,5;
+        
+        transform: scale(1.1);}
+}
+
+#button1{
+    font-style: italic;
+    font-size: 10mm;
+    
+    width: 250px;
+    height: 50px;
+}
+
+#button1:hover{
+    background-color: lightseagreen;
+}
+
+#print{
+    background: url("Images/Printbutton.jpg") 0 0;
+}
+
 

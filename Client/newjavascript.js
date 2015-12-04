@@ -1,14 +1,44 @@
+var ToDos = [];//array containing all todo object
+  
+  //change status from "In Progress" to "Finished"
+ function Mark(object) {
+   var ClickedToDoID = object.getAttribute("id");
+   console.log(ToDos[0].TodoID +"----"+ ClickedToDoID);
+     for(var i = 0; i < ToDos.length; i++) 
+   {
+       if(ToDos[i].TodoID.toString() === ClickedToDoID)
+       {
+           ToDos[i].Status = "Finished";
+       } 
+     }
+    Print(ToDos);
+}
 
+
+//change remove clicked object
+    function Delete(object) {
+   var ClickedToDoID = object.getAttribute("id");
+   console.log(ToDos[0].TodoID +"----"+ ClickedToDoID);
+     for(var i = 0; i < ToDos.length; i++) 
+   {
+       if(ToDos[i].TodoID.toString() === ClickedToDoID)
+       {
+           ToDos.splice(i,1);
+       }
+    }
+ Print(ToDos);     
+}
+  
+  
 var main = function ()
 {
     "use strict";
-    
-    var ToDos = [];//array containing all todo object
-    
+
 //when the "Add ToDo Button"is clicked
     $('#button1').click(function (event)
     {
         addTodoFromInputBox();
+     
     });
     
 //when the Enter is pushed
@@ -30,25 +60,21 @@ var main = function ()
         {
             soortToDobyDeadline();
         }
-         else if (document.getElementById("Sortby").options[document.getElementById("Sortby").selectedIndex].id === "Progress")
+         else if (document.getElementById("Sortby").options[document.getElementById("Sortby").selectedIndex].id === "PF")
         {
-            soortToDobyProgress();
+            soortPF();
         }
-         else if (document.getElementById("Sortby").options[document.getElementById("Sortby").selectedIndex].id === "Sort")
+         else if (document.getElementById("Sortby").options[document.getElementById("Sortby").selectedIndex].id === "FP")
         {
-            alert("Sort by??");
+            soortFP();
         }
-        else 
-        {
-            alert("not available yet");
-        }
+        
     });
 
 
 
 
 //function to make a Todo and add it.
-
   var addTodoFromInputBox = function ()
     {
         if (($('#inputrange1').val() !== "")
@@ -61,32 +87,29 @@ var main = function ()
                 "Priority": $('#inputrange1').val(),
                 "Task": $('#inputbox2').val(),
                 "Deadline": $('#inputbox3').val(),
-                "Status": "In process "};
+                "Status": "In progress"};
                 ToDos.push(new_object);
-                
-                
+ 
  
                 $("#outputbox").prepend("\n\
-        <table border=\"0\" id=\"some id\">\n\
-        <td width=\"20px\" bgcolor=\"#FF8000\" class=\"priority\"><center>" + new_object.Priority + "</center></td>\n\
-        <td width=\"300px\" bgcolor=\"#FF8000\" class=\"description\">"+ new_object.Task + " </td> \n\
-        <td width=\"90px\" bgcolor=\"#FF8000\" class=\"deadline\">"+ new_object.Deadline +" </td>\n\
-	<td width=\"80px\" bgcolor=\"#FF8000\" class=\"status\">"+ new_object.Status + " </td>\n\
-        <td width=\"28px\" bgcolor=\"#FF8000\" align=\"center\" class=\"change-status-button\"><b>&#x21ba;</b></td>\n\
-	<td width=\"28px\" bgcolor=\"#FF8000\" align=\"center\" class=\"delete-button\"><a style=\"font-family:'Segoe UI Symbol';color:black;font-size:17px;\">&#xe107;</a></td>\n\
-        </table>");
+        <table border=\"0\" id=\"todolist\"><tr>\n\
+        <td width=\"20px\" bgcolor=\"#B45F04\" class=\"priority\" id=\"item\"><center>" + new_object.Priority + "</center></td>\n\
+        <td width=\"300px\" bgcolor=\"#B45F04\" class=\"description\" id=\"item\">"+ new_object.Task + " </td> \n\
+        <td width=\"90px\" bgcolor=\"#B45F04\" class=\"deadline\" id=\"item\">"+ new_object.Deadline +" </td>\n\
+	    <td width=\"80px\" bgcolor=\"#B45F04\" class=\"status\" id=\"item\">"+ new_object.Status + " </td>\n\
+        <td width=\"28px\" bgcolor=\"#B45F04\" align=\"center\" style=\"cursor: pointer;\" onclick=\"Mark(this)\" id="+ new_object.TodoID + ">&#10004;</td>\n\
+	    <td width=\"28px\" bgcolor=\"#B45F04\" align=\"center\" style=\"cursor: pointer;\" onclick=\"Delete(this)\" id="+ new_object.TodoID + "><a style=\"font-family:'Segoe UI Symbol';color:black;font-size:17px;\">&#xe107;</a></td>\n\
+        </tr></table>");
   
-                
-                                
-                $('#inputrange1').val("1");
+                    
+        $('#inputrange1').val("1");
         document.getElementById("rangeText").innerHTML = rangeValues[$('#inputrange1').val()];
         $('#inputbox2').val("");
+        
+        var JsonToDo = JSON.stringify(ToDos);
+        console.log(JsonToDo);
     }
 };
-
-
-  
-
 
 
 
@@ -94,7 +117,7 @@ var main = function ()
 var soortToDobyPriority = function ()
 {
     var Priority1 = [];
-    for (var i = 4; i >= 1; i--)
+    for (var i = 1; i <= 4; i++)
     {
         for (var j = 0; j < ToDos.length; j++)
         {
@@ -104,7 +127,9 @@ var soortToDobyPriority = function ()
             }
         }
     }
-    Print(Priority1);
+    //todo = copy of priority 1
+    ToDos = Priority1.splice(0);
+    Print(ToDos);
 };
    
    //function to sort by deadline
@@ -115,18 +140,42 @@ var soortToDobyDeadline = function ()
     {
      return parseFloat(a.Deadline.replace(/-|\//g, "")) - parseFloat(b.Deadline.replace(/-|\//g, ""));
     });
-   Print(Deadline);
+   Deadline.reverse();
+   ToDos =  Deadline.splice(0);
+   Print(ToDos);
 };
 
 
-//function to sort by progress. Wont work now
-var soortToDobyProgress = function ()
+//function to sort by progress PF (In Progress - Finished)
+var soortPF = function ()
 {
     var inProgress =[];
     var Finished =[];
      for (var i = 0; i < ToDos.length; i++)
         {
-            if(ToDos[i].Status === "In process")
+            if(ToDos[i].Status === "In progress")
+            {inProgress.push(ToDos[i]);}
+
+        }
+     for (var i = 0; i < ToDos.length; i++)
+        {
+            if(ToDos[i].Status === "Finished")
+            {Finished.push(ToDos[i]);}
+        }
+        
+   var sorted = Finished.concat(inProgress);
+   ToDos =  sorted.splice(0);
+   Print(ToDos);
+};
+
+//function to sort by progress FP ( Finished - In Progress )
+var soortFP = function ()
+{
+    var inProgress =[];
+    var Finished =[];
+     for (var i = 0; i < ToDos.length; i++)
+        {
+            if(ToDos[i].Status === "In progress")
             {inProgress.push(ToDos[i]);}
 
         }
@@ -137,26 +186,10 @@ var soortToDobyProgress = function ()
         }
         
    var sorted = inProgress.concat(Finished);
-   Print(sorted);
+   ToDos =  sorted.splice(0);
+   Print(ToDos);
 };
 
-//function to print an array. called in each sorting method.
-var Print = function (A)
-{
-    $("#outputbox").html("");
-    for (var i = 0; i < A.length; i++)
-    {
-        $("#outputbox").append("\n\
-        <table border=\"0\" id=\"some id\">\n\
-        <td width=\"20px\" bgcolor=\"#FF8000\" class=\"priority\"><center>" + A[i].Priority + "</center></td>\n\
-        <td width=\"300px\" bgcolor=\"#FF8000\" class=\"description\">"+ A[i].Task + " </td> \n\
-        <td width=\"90px\" bgcolor=\"#FF8000\" class=\"deadline\">"+ A[i].Deadline +" </td>\n\
-	<td width=\"80px\" bgcolor=\"#FF8000\" class=\"status\">"+ A[i].Status + " </td>\n\
-        <td width=\"28px\" bgcolor=\"#FF8000\" align=\"center\" class=\"change-status-button\"><b>&#x21ba;</b></td>\n\
-	<td width=\"28px\" bgcolor=\"#FF8000\" align=\"center\" class=\"delete-button\"><a style=\"font-family:'Segoe UI Symbol';color:black;font-size:17px;\">&#xe107;</a></td>\n\
-        </table>");
-    }
-};
 
 // for the priority choosing range.
 // define a lookup for what text should be displayed for each value in your range
@@ -177,3 +210,37 @@ $(function () {
     });
 };
         $(document).ready(main);
+//function to print an array. called in each sorting method.
+var Print = function (A)
+{
+    $("#outputbox").html("");
+    for (var i = 0; i < A.length; i++)
+    {
+        $("#outputbox").prepend("\n\
+        <table border=\"0\" id=\"todolist\">\n\
+        <td width=\"20px\" bgcolor=\"#B45F04\" class=\"priority\"><center>" + A[i].Priority + "</center></td>\n\
+        <td width=\"300px\" bgcolor=\"#B45F04\" class=\"description\">"+ A[i].Task + " </td> \n\
+        <td width=\"90px\" bgcolor=\"#B45F04\" class=\"deadline\">"+ A[i].Deadline +" </td>\n\
+	    <td width=\"80px\" bgcolor=\"#B45F04\" class=\"status\">"+ A[i].Status + " </td>\n\
+        <td width=\"28px\" bgcolor=\"#B45F04\" align=\"center\" style=\"cursor: pointer;\" onclick=\"Mark(this)\" id="+ A[i].TodoID + ">&#10004;</td>\n\
+	    <td width=\"28px\" bgcolor=\"#B45F04\" align=\"center\" style=\"cursor: pointer;\" onclick=\"Delete(this)\" id="+ A[i].TodoID + "><a style=\"font-family:'Segoe UI Symbol';color:black;font-size:17px;\">&#xe107;</a></td>\n\
+        </table>");
+    }
+    var JsonToDo = JSON.stringify(ToDos);
+        console.log(JsonToDo);
+};
+
+function printData()
+{
+   var printTableHead=document.getElementById("printTable");
+   var printItems=document.getElementById("todolist");
+   newWin= window.open("");
+   newWin.document.write(printTableHead.outerHTML);
+   newWin.document.write(printItems.outerHTML);
+   newWin.print();
+   newWin.close();
+}
+
+$('#printButton').on('click',function(){
+printData();
+})
