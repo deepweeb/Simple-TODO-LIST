@@ -1,3 +1,4 @@
+
 var ToDos = [];//array containing all todo object
   
   //change status from "In Process" to "Finished"
@@ -94,7 +95,7 @@ var main = function ()
  
  
                 $("#outputbox").prepend("\n\
-        <table border=\"0\" id=\"todolist\">\n\
+        <table border=\"0\" id=\"some id\">\n\
         <td width=\"20px\" bgcolor=\"#FF8000\" class=\"priority\"><center>" + new_object.Priority + "</center></td>\n\
         <td width=\"300px\" bgcolor=\"#FF8000\" class=\"description\">"+ new_object.Task + " </td> \n\
         <td width=\"90px\" bgcolor=\"#FF8000\" class=\"deadline\">"+ new_object.Deadline +" </td>\n\
@@ -104,9 +105,12 @@ var main = function ()
         </table>");
   
                     
-                $('#inputrange1').val("1");
+        $('#inputrange1').val("1");
         document.getElementById("rangeText").innerHTML = rangeValues[$('#inputrange1').val()];
         $('#inputbox2').val("");
+        
+        var JsonToDo = JSON.stringify(ToDos);
+        console.log(JsonToDo);
     }
 };
 
@@ -126,7 +130,9 @@ var soortToDobyPriority = function ()
             }
         }
     }
-    Print(Priority1);
+    //todo = copy of priority 1
+    ToDos = Priority1.splice(0);
+    Print(ToDos);
 };
    
    //function to sort by deadline
@@ -138,7 +144,8 @@ var soortToDobyDeadline = function ()
      return parseFloat(a.Deadline.replace(/-|\//g, "")) - parseFloat(b.Deadline.replace(/-|\//g, ""));
     });
    Deadline.reverse();
-   Print(Deadline);
+   ToDos =  Deadline.splice(0);
+   Print(ToDos);
 };
 
 
@@ -160,7 +167,8 @@ var soortPF = function ()
         }
         
    var sorted = Finished.concat(inProgress);
-   Print(sorted);
+   ToDos =  sorted.splice(0);
+   Print(ToDos);
 };
 
 //function to sort by progress FP ( Finished - In Process )
@@ -181,7 +189,8 @@ var soortFP = function ()
         }
         
    var sorted = inProgress.concat(Finished);
-   Print(sorted);
+   ToDos =  sorted.splice(0);
+   Print(ToDos);
 };
 
 
@@ -211,7 +220,7 @@ var Print = function (A)
     for (var i = 0; i < A.length; i++)
     {
         $("#outputbox").prepend("\n\
-        <table border=\"0\" id=\"todolist\">\n\
+        <table border=\"0\" id=\"some id\">\n\
         <td width=\"20px\" bgcolor=\"#FF8000\" class=\"priority\"><center>" + A[i].Priority + "</center></td>\n\
         <td width=\"300px\" bgcolor=\"#FF8000\" class=\"description\">"+ A[i].Task + " </td> \n\
         <td width=\"90px\" bgcolor=\"#FF8000\" class=\"deadline\">"+ A[i].Deadline +" </td>\n\
@@ -220,19 +229,6 @@ var Print = function (A)
 	<td width=\"28px\" bgcolor=\"#FF8000\" align=\"center\" style=\"cursor: pointer;\" onclick=\"Delete(this)\" id="+ A[i].TodoID + "><a style=\"font-family:'Segoe UI Symbol';color:black;font-size:17px;\">&#xe107;</a></td>\n\
         </table>");
     }
+    var JsonToDo = JSON.stringify(ToDos);
+        console.log(JsonToDo);
 };
-
-function printData()
-{
-   var printTableHead=document.getElementById("printTable");
-   var printItems=document.getElementById("todolist");
-   newWin= window.open("");
-   newWin.document.write(printTableHead.outerHTML);
-   newWin.document.write(printItems.outerHTML);
-   newWin.print();
-   newWin.close();
-}
-
-$('#printButton').on('click',function(){
-printData();
-})

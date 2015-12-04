@@ -11,10 +11,13 @@ body {
 #logo{
     width: 400px;
     height: 200px;
-    border: 2px antiquewhite;
     position: relative;
     top: 50px;
     right: 300px;
+}
+
+#textfield:active{
+    background-color: lightgreen;
 }
 
 #login{
@@ -22,13 +25,25 @@ body {
     bottom: 100px;
     left: 300px;
     
-}
+}   
 
-#button{
+#loginButton{
     position: relative;
     bottom: 10px;
-    left: 100px;
-    background-color: #B45F04;
+    left: 85px;
+    width: 80px;
+    
+}
+
+#loginButton:hover{
+animation-name: loginButton;
+animation-fill-mode: forwards; 
+animation-duration: 0.5s;
+}
+
+@keyframes loginButton{
+    from{background-color: dimgrey;}
+    to {background-color: ghostwhite;}
 }
 
 #text{
@@ -39,7 +54,6 @@ body {
 
 hr{
     width: 1000px;
-   
 }
 
 #register{
